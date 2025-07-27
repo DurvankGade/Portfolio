@@ -14,7 +14,7 @@ const Hero = () => {
           <div className="relative">
             <div className="w-48 h-48 rounded-full overflow-hidden border-4 border-blue-500 shadow-2xl">
               <img 
-                src="assets\WhatsApp Image 2025-03-10 at 15.36.07_caa7c11d.jpg" 
+                src="public\assets\portrait.jpg" 
                 alt="Durvank Gade" 
                 className="w-full h-full object-cover"
                 onError={(e) => {
