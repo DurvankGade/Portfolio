@@ -1,3 +1,5 @@
+import { motion } from 'framer-motion';
+
 const Contact = () => {
   const socialLinks = [
     {
@@ -27,20 +29,22 @@ const Contact = () => {
   ];
 
   return (
-    <section id="contact" className="bg-black text-white py-20 px-6">
+    <motion.section
+      id="contact"
+      className="bg-black text-white py-20 px-6"
+      initial={{ opacity: 0, y: 40 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, amount: 0.3 }}
+      transition={{ duration: 0.7, ease: 'easeOut' }}
+    >
       <div className="max-w-6xl mx-auto">
-        <h2 className="text-4xl md:text-5xl font-bold mb-12 text-center bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
-          Get In Touch
-        </h2>
-        
-        <p className="text-xl text-gray-300 text-center mb-16 max-w-3xl mx-auto">
-          I'm always interested in hearing about new opportunities, interesting projects, 
-          or just having a chat about technology and innovation. Feel free to reach out!
-        </p>
-
+        <h2 className="section-title">Get In Touch</h2>
+        <motion.p className="text-xl text-gray-300 text-center mb-16 max-w-3xl mx-auto" initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }} transition={{ duration: 0.7, delay: 0.1 }}>
+          I'm always interested in hearing about new opportunities, interesting projects, or just having a chat about technology and innovation. Feel free to reach out!
+        </motion.p>
         <div className="grid lg:grid-cols-2 gap-12">
           {/* Contact Form */}
-          <div className="bg-slate-800/50 p-8 rounded-xl border border-slate-700">
+          <motion.div className="card" initial={{ opacity: 0, x: -40 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 0.7, delay: 0.2 }}>
             <h3 className="text-2xl font-semibold mb-6 text-blue-400">Send a Message</h3>
             <form className="space-y-6">
               <div className="grid md:grid-cols-2 gap-4">
@@ -79,17 +83,16 @@ const Contact = () => {
               </div>
               <button 
                 type="submit" 
-                className="w-full bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 text-white px-8 py-4 rounded-lg font-semibold transition-all duration-300 transform hover:scale-105 shadow-lg"
+                className="w-full btn-primary"
               >
                 Send Message
               </button>
             </form>
-          </div>
-
+          </motion.div>
           {/* Contact Information */}
-          <div className="space-y-8">
+          <motion.div className="space-y-8" initial={{ opacity: 0, x: 40 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 0.7, delay: 0.3 }}>
             {/* Direct Contact */}
-            <div className="bg-slate-800/50 p-8 rounded-xl border border-slate-700">
+            <div className="card">
               <h3 className="text-2xl font-semibold mb-6 text-purple-400">Contact Information</h3>
               <div className="space-y-4">
                 <div className="flex items-center gap-4">
@@ -134,30 +137,30 @@ const Contact = () => {
                 </div>
               </div>
             </div>
-
             {/* Social Links */}
-            <div className="bg-slate-800/50 p-8 rounded-xl border border-slate-700">
+            <div className="card">
               <h3 className="text-2xl font-semibold mb-6 text-green-400">Connect With Me</h3>
               <div className="grid grid-cols-2 gap-4">
                 {socialLinks.map((social, idx) => (
-                  <a
+                  <motion.a
                     key={idx}
                     href={social.url}
                     target="_blank"
                     rel="noopener noreferrer"
                     className={`flex items-center gap-3 p-4 bg-slate-700/50 border border-slate-600 rounded-lg hover:border-slate-500 transition-all duration-300 group ${social.color}`}
+                    whileHover={{ scale: 1.08 }}
+                    transition={{ type: 'spring', stiffness: 300 }}
                   >
                     <span className="text-2xl">{social.icon}</span>
                     <span className="font-semibold text-white group-hover:scale-105 transition-transform">
                       {social.name}
                     </span>
-                  </a>
+                  </motion.a>
                 ))}
               </div>
             </div>
-
             {/* Quick Stats */}
-            <div className="bg-slate-800/50 p-8 rounded-xl border border-slate-700">
+            <div className="card">
               <h3 className="text-2xl font-semibold mb-6 text-pink-400">Quick Stats</h3>
               <div className="grid grid-cols-2 gap-4">
                 <div className="text-center">
@@ -178,10 +181,10 @@ const Contact = () => {
                 </div>
               </div>
             </div>
-          </div>
+          </motion.div>
         </div>
       </div>
-    </section>
+    </motion.section>
   );
 };
 

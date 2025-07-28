@@ -1,3 +1,5 @@
+import { motion } from 'framer-motion';
+
 const experiences = [
   {
     role: "Lead of Data Science Department",
@@ -61,18 +63,27 @@ const certifications = [
 
 const Experience = () => {
   return (
-    <section id="experience" className="bg-slate-800 text-white py-20 px-6">
+    <motion.section
+      id="experience"
+      className="bg-slate-800 text-white py-20 px-6"
+      initial={{ opacity: 0, y: 40 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, amount: 0.3 }}
+      transition={{ duration: 0.7, ease: 'easeOut' }}
+    >
       <div className="max-w-6xl mx-auto">
-        <h2 className="text-4xl md:text-5xl font-bold mb-12 text-center bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
-          Experience & Education
-        </h2>
-
+        <h2 className="section-title">Experience & Education</h2>
         {/* Work Experience */}
-        <div className="mb-16">
+        <motion.div className="mb-16" initial={{ opacity: 0, x: -40 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 0.7, delay: 0.1 }}>
           <h3 className="text-3xl font-semibold mb-8 text-center text-blue-400">Work Experience</h3>
           <div className="space-y-6">
             {experiences.map((exp, idx) => (
-              <div key={idx} className="bg-slate-700/50 p-8 rounded-xl border border-slate-600 hover:border-slate-500 transition-all duration-300">
+              <motion.div
+                key={idx}
+                className="card hover:scale-105"
+                whileHover={{ scale: 1.04 }}
+                transition={{ type: 'spring', stiffness: 300 }}
+              >
                 <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-4">
                   <div>
                     <h4 className="text-2xl font-semibold text-white">{exp.role}</h4>
@@ -85,23 +96,27 @@ const Experience = () => {
                 <p className="text-gray-300 mb-4 leading-relaxed">{exp.desc}</p>
                 <div className="flex flex-wrap gap-2">
                   {exp.achievements.map((achievement, i) => (
-                    <span key={i} className="px-3 py-1 bg-blue-500/20 border border-blue-500/30 rounded-full text-sm text-blue-300">
+                    <motion.span
+                      key={i}
+                      className="px-3 py-1 bg-blue-500/20 border border-blue-500/30 rounded-full text-sm text-blue-300 hover:scale-110 transition-transform cursor-pointer"
+                      whileHover={{ scale: 1.12 }}
+                      transition={{ type: 'spring', stiffness: 300 }}
+                    >
                       {achievement}
-                    </span>
+                    </motion.span>
                   ))}
                 </div>
-              </div>
+              </motion.div>
             ))}
           </div>
-        </div>
-
+        </motion.div>
         <div className="grid lg:grid-cols-2 gap-12">
           {/* Education */}
-          <div>
+          <motion.div initial={{ opacity: 0, x: -40 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 0.7, delay: 0.2 }}>
             <h3 className="text-3xl font-semibold mb-8 text-center text-purple-400">Education</h3>
             <div className="space-y-6">
               {education.map((edu, idx) => (
-                <div key={idx} className="bg-slate-700/50 p-8 rounded-xl border border-slate-600">
+                <div key={idx} className="card">
                   <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-4">
                     <div>
                       <h4 className="text-2xl font-semibold text-white">{edu.degree}</h4>
@@ -114,22 +129,26 @@ const Experience = () => {
                   <p className="text-green-400 font-semibold mb-4">{edu.gpa}</p>
                   <div className="flex flex-wrap gap-2">
                     {edu.highlights.map((highlight, i) => (
-                      <span key={i} className="px-3 py-1 bg-purple-500/20 border border-purple-500/30 rounded-full text-sm text-purple-300">
+                      <motion.span
+                        key={i}
+                        className="px-3 py-1 bg-purple-500/20 border border-purple-500/30 rounded-full text-sm text-purple-300 hover:scale-110 transition-transform cursor-pointer"
+                        whileHover={{ scale: 1.12 }}
+                        transition={{ type: 'spring', stiffness: 300 }}
+                      >
                         {highlight}
-                      </span>
+                      </motion.span>
                     ))}
                   </div>
                 </div>
               ))}
             </div>
-          </div>
-
+          </motion.div>
           {/* Certifications */}
-          <div>
+          <motion.div initial={{ opacity: 0, x: 40 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 0.7, delay: 0.3 }}>
             <h3 className="text-3xl font-semibold mb-8 text-center text-green-400">Certifications</h3>
             <div className="space-y-6">
               {certifications.map((cert, idx) => (
-                <div key={idx} className="bg-slate-700/50 p-6 rounded-xl border border-slate-600">
+                <div key={idx} className="card">
                   <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-3">
                     <div>
                       <h4 className="text-xl font-semibold text-white">{cert.name}</h4>
@@ -143,11 +162,10 @@ const Experience = () => {
                 </div>
               ))}
             </div>
-          </div>
+          </motion.div>
         </div>
-
         {/* Key Achievements */}
-        <div className="mt-16 bg-slate-700/50 p-8 rounded-xl border border-slate-600">
+        <motion.div className="mt-16 card" initial={{ opacity: 0, y: 40 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.7, delay: 0.4 }}>
           <h3 className="text-3xl font-semibold mb-8 text-center text-pink-400">Key Achievements</h3>
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
             <div className="text-center">
@@ -179,9 +197,9 @@ const Experience = () => {
               <p className="text-gray-400 text-sm">AI/ML Solutions Deployed</p>
             </div>
           </div>
-        </div>
+        </motion.div>
       </div>
-    </section>
+    </motion.section>
   );
 };
 

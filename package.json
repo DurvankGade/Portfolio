@@ -17,7 +17,7 @@
   },
   "dependencies": {
     "@vitejs/plugin-react": "^4.7.0",
-    "framer-motion": "^12.23.9",
+    "framer-motion": "^12.23.11",
     "lucide-react": "^0.526.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0"

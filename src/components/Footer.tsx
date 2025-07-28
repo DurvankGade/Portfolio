@@ -1,3 +1,5 @@
+import { motion } from 'framer-motion';
+
 const Footer = () => {
   const socialLinks = [
     { name: "GitHub", url: "https://github.com/DurvankGade", icon: "🐙" },
@@ -7,7 +9,13 @@ const Footer = () => {
   ];
 
   return (
-    <footer className="bg-slate-900 text-gray-400 py-12 px-6">
+    <motion.footer
+      className="bg-slate-900 text-gray-400 py-12 px-6"
+      initial={{ opacity: 0 }}
+      whileInView={{ opacity: 1 }}
+      viewport={{ once: true }}
+      transition={{ duration: 0.8, ease: 'easeOut' }}
+    >
       <div className="max-w-6xl mx-auto">
         {/* Main Footer Content */}
         <div className="grid md:grid-cols-3 gap-8 mb-8">
@@ -20,15 +28,17 @@ const Footer = () => {
             </p>
             <div className="flex space-x-4">
               {socialLinks.map((social, idx) => (
-                <a
+                <motion.a
                   key={idx}
                   href={social.url}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="w-10 h-10 bg-slate-800 rounded-lg flex items-center justify-center hover:bg-slate-700 transition-colors group"
+                  whileHover={{ scale: 1.12 }}
+                  transition={{ type: 'spring', stiffness: 300 }}
                 >
                   <span className="text-lg group-hover:scale-110 transition-transform">{social.icon}</span>
-                </a>
+                </motion.a>
               ))}
             </div>
           </div>
@@ -85,20 +95,22 @@ const Footer = () => {
 
         {/* Back to Top */}
         <div className="text-center mt-8">
-          <a 
+          <motion.a 
             href="#" 
             className="inline-flex items-center gap-2 px-6 py-3 bg-slate-800 rounded-lg hover:bg-slate-700 transition-colors group"
             onClick={(e) => {
               e.preventDefault();
               window.scrollTo({ top: 0, behavior: 'smooth' });
             }}
+            whileHover={{ scale: 1.08 }}
+            transition={{ type: 'spring', stiffness: 300 }}
           >
             <span>↑</span>
             <span>Back to Top</span>
-          </a>
+          </motion.a>
         </div>
       </div>
-    </footer>
+    </motion.footer>
   );
 };
 
