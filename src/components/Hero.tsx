@@ -70,6 +70,14 @@ const Hero = () => {
           >
             View Projects
           </a>
+          <a 
+            href="https://drive.google.com/file/d/1LP8Oc9L5zxLD-AShe4XLKDWKtQ_RukKn/view?usp=sharing" 
+            target="_blank"
+            rel="noopener noreferrer"
+            className="px-8 py-4 bg-gradient-to-r from-green-500 to-emerald-600 hover:from-green-600 hover:to-emerald-700 rounded-lg font-semibold transition-all duration-300 transform hover:scale-105 shadow-lg"
+          >
+            📄 Download Resume
+          </a>
         </div>
 
         {/* Scroll Indicator */}
